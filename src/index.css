@@ -1,0 +1,146 @@
+/* PixelPrompt - 1984 Macintosh System 1 美学 */
+/* 像素字体: VT323 (主要) + Press Start 2P (备用) */
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 纯黑白配色 - Monochrome */
+    --background: 0 0% 94%; /* #F0F0F0 - 浅灰背景 */
+    --foreground: 0 0% 0%; /* #000000 - 纯黑 */
+
+    --card: 0 0% 100%; /* #FFFFFF - 纯白 */
+    --card-foreground: 0 0% 0%; /* #000000 - 纯黑 */
+
+    --popover: 0 0% 100%; /* #FFFFFF - 纯白 */
+    --popover-foreground: 0 0% 0%; /* #000000 - 纯黑 */
+
+    --primary: 0 0% 0%; /* #000000 - 纯黑 */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF - 纯白 */
+
+    --secondary: 0 0% 100%; /* #FFFFFF - 纯白 */
+    --secondary-foreground: 0 0% 0%; /* #000000 - 纯黑 */
+
+    --muted: 0 0% 85%; /* #D9D9D9 - 中灰 */
+    --muted-foreground: 0 0% 40%; /* #666666 - 深灰 */
+
+    --accent: 0 0% 100%; /* #FFFFFF - 纯白 */
+    --accent-foreground: 0 0% 0%; /* #000000 - 纯黑 */
+
+    --destructive: 0 0% 0%; /* #000000 - 纯黑 */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF - 纯白 */
+
+    --border: 0 0% 0%; /* #000000 - 纯黑 */
+    --input: 0 0% 100%; /* #FFFFFF - 纯白 */
+    --ring: 0 0% 0%; /* #000000 - 纯黑 */
+
+    --radius: 0; /* 无圆角 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    border-radius: 0 !important; /* 强制无圆角 */
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'VT323', 'Press Start 2P', monospace;
+    /* 点阵纹理背景 - Dithering */
+    background-color: #f0f0f0;
+    background-image: radial-gradient(#000000 1px, transparent 1px);
+    background-size: 4px 4px;
+    /* 自定义光标 - Pixel Arrow */
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="black" d="M0,0 L0,12 L4,8 L6,12 L8,11 L6,7 L10,7 Z"/><path fill="white" d="M1,1 L1,10 L4,7 L5,10 L6,9.5 L5,6 L9,6 L1,1 Z"/></svg>') 0 0, auto;
+  }
+
+  /* 链接和按钮的手指光标 */
+  a, button, [role="button"] {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="black" d="M6,0 L6,6 L0,6 L0,10 L6,10 L6,16 L10,16 L10,10 L16,10 L16,6 L10,6 L10,0 Z"/><path fill="white" d="M7,1 L7,7 L1,7 L1,9 L7,9 L7,15 L9,15 L9,9 L15,9 L15,7 L9,7 L9,1 Z"/></svg>') 8 8, pointer;
+  }
+
+  /* 输入框的工字光标 */
+  input, textarea {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><rect x="7" y="0" width="2" height="16" fill="black"/><rect x="4" y="0" width="8" height="2" fill="black"/><rect x="4" y="14" width="8" height="2" fill="black"/></svg>') 8 8, text;
+    caret-color: #000000;
+    caret-shape: block; /* 块状光标 */
+  }
+
+  /* Placeholder 样式 - 像素字体强制应用 */
+  input::placeholder,
+  textarea::placeholder {
+    font-family: 'VT323', 'Press Start 2P', monospace !important;
+    opacity: 0.6;
+    color: #aaaaaa;
+    font-weight: 400;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'VT323', 'Press Start 2P', monospace;
+    font-weight: 700;
+  }
+}
+
+@layer utilities {
+  /* 反色悬停效果 - Invert on Hover */
+  .pixel-hover {
+    @apply transition-none;
+  }
+
+  .pixel-hover:hover {
+    @apply bg-black text-white;
+  }
+
+  /* 点击位移效果 - Mechanical Press */
+  .pixel-active:active {
+    transform: translate(1px, 1px);
+  }
+
+  /* 粗块状光标闪烁 */
+  @keyframes caret-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .caret-block {
+    caret-color: #000000;
+    animation: caret-blink 1s step-end infinite;
+  }
+}
+
+/* 拖拽相关样式 - Pixel Art 风格 */
+.sortable-ghost {
+  opacity: 0.4;
+}
+
+.sortable-drag {
+  cursor: grabbing !important;
+}
+
+/* 隐形拖拽感应区样式 - 极致纤细 */
+.stealth-drag-zone {
+  user-select: none;
+  touch-action: none;
+  background-color: transparent;
+  border: none;
+  min-height: 8px; /* 确保最小触摸区域 */
+}
+
+.stealth-drag-zone:hover {
+  border-bottom: 1px dotted #000000;
+  cursor: grab;
+}
+
+.stealth-drag-zone:active {
+  cursor: grabbing;
+  border-bottom: 1px solid #000000;
+}
+
+/* 像素风图标样式 */
+.pixel-icon {
+  shape-rendering: crispEdges;
+}
