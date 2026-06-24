@@ -5,6 +5,7 @@
 你可以把常用提示词收进卡片里，随时搜索、编辑、复制，也可以在底部记一些临时灵感。
 
 在线访问：
+<img width="3078" height="1328" alt="image" src="https://github.com/user-attachments/assets/17a70cef-bc6e-48d1-b33b-15602e85d124" />
 
 https://kanshao2077.github.io/pixel-prompt/
 
