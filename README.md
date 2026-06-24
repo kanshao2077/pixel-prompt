@@ -3,8 +3,7 @@
 一个复古像素风的提示词管理工具。
 
 你可以把常用提示词收进卡片里，随时搜索、编辑、复制，也可以在底部记一些临时灵感。
-<img width="1104" height="742" alt="image" src="https://github.com/user-attachments/assets/6438b98f-3faf-4263-a318-068a2a9a81e9" />
-
+<img width="552" height="371" alt="image" src="https://github.com/user-attachments/assets/6438b98f-3faf-4263-a318-068a2a9a81e9" />
 
 在线访问：
 <img width="3078" height="1328" alt="image" src="https://github.com/user-attachments/assets/17a70cef-bc6e-48d1-b33b-15602e85d124" />
